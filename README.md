@@ -1,4 +1,4 @@
-# Flutter UI Design (Login and Register)
+# Udacoding Flutter Course
 
 My first flutter project
 

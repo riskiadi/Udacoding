@@ -15,6 +15,10 @@ My first flutter project
     <td><img src="https://raw.githubusercontent.com/riskiadi/Udacoding/master/_screnshoot/ss5.jpg" width="50%"/></td>
     <td><img src="https://raw.githubusercontent.com/riskiadi/Udacoding/master/_screnshoot/ss6.jpg" width="50%"/></td>
   </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/riskiadi/Udacoding/master/_screnshoot/ss7.jpg" width="50%"/></td>
+    <td><img src="https://raw.githubusercontent.com/riskiadi/Udacoding/master/_screnshoot/ss8.jpg" width="50%"/></td>
+  </tr>
 </table>
 
 

@@ -64,8 +64,11 @@ class _HomePageState extends State<HomePage> {
       child: FutureBuilder(
         future: getFavoriteData(),
         builder: (context, snapshot) {
-          if(snapshot.hasError)print(snapshot.error);
-          return snapshot.hasData ? favoriteVideoList(snapshot.data) : Center(child: CircularProgressIndicator(strokeWidth: 2,),);
+          if(snapshot.connectionState == ConnectionState.done && snapshot.hasData==false){
+            return Center(child: Container(child: Text('Empty Favorites\n Add Your Own Favorites Video', style: TextStyle(fontSize: 17), textAlign: TextAlign.center,),));
+          }else{
+            return snapshot.hasData ? favoriteVideoList(snapshot.data) : Center(child: CircularProgressIndicator(strokeWidth: 2,),);
+          }
         },
       ),
     );

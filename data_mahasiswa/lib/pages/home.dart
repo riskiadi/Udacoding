@@ -5,6 +5,7 @@ import 'package:data_mahasiswa/db_helper.dart';
 import 'package:data_mahasiswa/models/admin.dart';
 import 'package:data_mahasiswa/models/mahasiswa.dart';
 import 'package:data_mahasiswa/pages/create.dart';
+import 'package:data_mahasiswa/pages/detail.dart';
 import 'package:data_mahasiswa/pages/login.dart';
 import 'package:data_mahasiswa/utils/color.dart';
 import 'package:flutter/material.dart';
@@ -96,21 +97,36 @@ class _HomePageState extends State<HomePage> {
                 leading: Image.asset('assets/dummy_image/${Random().nextInt(4)+1}.jpg', fit: BoxFit.cover, width: 50, height: 50,),
                 title: Text(items[index].nama),
                 subtitle: Text(items[index].nim),
-                trailing: InkWell(
-                  borderRadius: BorderRadius.circular(30),
-                  onTap: (){
-                    db.deleteMahasiswa(items[index].id).then((value){
-                      setState(() {
-                        items.clear();
-                        _getAllMahasiswa();
-                        toast('Delete success');
-                      });
-                    });
-                  },
-                  child: Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Icon(Icons.delete, color: Colors.red.withOpacity(0.8),)
-                  ),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(mahasiswa: items[index],),));
+                      },
+                      child: Container(
+                          padding: const EdgeInsets.all(10),
+                          child: Icon(Icons.remove_red_eye, color: Colors.blue.withOpacity(0.8),)
+                      ),
+                    ),
+                    InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: (){
+                        db.deleteMahasiswa(items[index].id).then((value){
+                          setState(() {
+                            items.clear();
+                            _getAllMahasiswa();
+                            toast('Delete success');
+                          });
+                        });
+                      },
+                      child: Container(
+                          padding: const EdgeInsets.all(10),
+                          child: Icon(Icons.delete, color: Colors.red.withOpacity(0.8),)
+                      ),
+                    ),
+                  ],
                 ),
                 onTap: (){
                   _navigateToUpdate({

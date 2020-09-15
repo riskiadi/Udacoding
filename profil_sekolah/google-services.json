@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "854396626905",
+    "firebase_url": "https://profil-sekolah-394b3.firebaseio.com",
+    "project_id": "profil-sekolah-394b3",
+    "storage_bucket": "profil-sekolah-394b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854396626905:android:4efd3f11000f9159115bc8",
+        "android_client_info": {
+          "package_name": "com.alkalynx.profil_sekolah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854396626905-gq41vk6od7gdvj8855tnd48nro3q14bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alkalynx.profil_sekolah",
+            "certificate_hash": "78e819bf04ba56fd832ccbf7583be732c3ec85a7"
+          }
+        },
+        {
+          "client_id": "854396626905-1el739p40hg610od3nmsmd2n0oeqp7e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAt9rhVFmZNaleOoSOPOuqkznr-0NgMQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854396626905-1el739p40hg610od3nmsmd2n0oeqp7e7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

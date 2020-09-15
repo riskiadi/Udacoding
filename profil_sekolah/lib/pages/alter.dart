@@ -81,6 +81,7 @@ class _AlterPageState extends State<AlterPage> {
                   labelText: 'Latitude',
                   filled: true,
                 ),
+                keyboardType: TextInputType.number,
                 validator: (value) {
                   return value.isEmpty ? "Harus diisi": null;
                 },
@@ -92,6 +93,7 @@ class _AlterPageState extends State<AlterPage> {
                   labelText: 'Longitude',
                   filled: true,
                 ),
+                keyboardType: TextInputType.number,
                 validator: (value) {
                   return value.isEmpty ? "Harus diisi": null;
                 },

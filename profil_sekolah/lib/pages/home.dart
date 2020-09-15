@@ -207,8 +207,8 @@ class _HomePageState extends State<HomePage> {
             key: key,
             namaSekolah: snapshot.value[key]["namaSekolah"],
             deskripsi: snapshot.value[key]["deskripsi"],
-            latitude: snapshot.value[key]["latitude"],
-            longitude: snapshot.value[key]["longitude"],
+            latitude: double.parse(snapshot.value[key]["latitude"].toString()),
+            longitude: double.parse(snapshot.value[key]["longitude"].toString()),
           )
       );
     }

@@ -147,6 +147,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
+            _listSekolah.length>0?Container():loadingWidget(),
+
             ListView.builder(
               shrinkWrap: true,
               physics: ScrollPhysics(),
@@ -193,6 +195,19 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Column loadingWidget() {
+    return Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.all(20),
+                height: 50,
+                width: 50,
+                child: CircularProgressIndicator(),
+              ),
+            ],
+          );
   }
 
 

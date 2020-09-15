@@ -27,11 +27,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green,
       body: Container(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset('assets/school.png', height: 200,),
               Text('Please Wait...'),
               SizedBox(height: 30,),
               CircularProgressIndicator(),

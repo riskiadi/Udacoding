@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "278132550097",
+    "firebase_url": "https://wisata-app-282a5.firebaseio.com",
+    "project_id": "wisata-app-282a5",
+    "storage_bucket": "wisata-app-282a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278132550097:android:41a701ccbe59b73f8e58f0",
+        "android_client_info": {
+          "package_name": "com.alkalynx.wisata_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278132550097-d347e8rm0vq4rcuk85v8omiahfm91qbq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alkalynx.wisata_app",
+            "certificate_hash": "78e819bf04ba56fd832ccbf7583be732c3ec85a7"
+          }
+        },
+        {
+          "client_id": "278132550097-lbft5ptksstcgsg715kbilast01puumh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClv5A4MiLAmQjP21l3sTGuSGecC9U-VeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278132550097-lbft5ptksstcgsg715kbilast01puumh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

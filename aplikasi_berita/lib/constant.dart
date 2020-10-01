@@ -1,0 +1,2 @@
+const String baseUrl = "https://fcm.googleapis.com/fcm/send";
+const String serverKey = "key=AAAAVgrP1Ag:APA91bHSLa7MQVfj5mzurPjIpr8ISf6ffi8gwkP1SaXyDKkQnBOJoK3NqzRs6cIvfaVN6B4wuRM4WwfRJfW1818_NRuVaNhtCV7VB0EIcZedtjq81lzGnrAH8foy-DrcOiUUknpw7XWr";

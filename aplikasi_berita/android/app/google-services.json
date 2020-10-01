@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "369548579848",
+    "firebase_url": "https://fir-cloud-messaging-32d1e.firebaseio.com",
+    "project_id": "fir-cloud-messaging-32d1e",
+    "storage_bucket": "fir-cloud-messaging-32d1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369548579848:android:a0e7f95afa3def873fedbd",
+        "android_client_info": {
+          "package_name": "com.alkalynx.aplikasi_berita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369548579848-3ee49ft0qv7kmospel1gq2mimlep9mnj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alkalynx.aplikasi_berita",
+            "certificate_hash": "78e819bf04ba56fd832ccbf7583be732c3ec85a7"
+          }
+        },
+        {
+          "client_id": "369548579848-3714i4258rb0mlbu5730id8edi8e74ls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdXoPGiUCMxeztOS5zanucP6L8oHxzO7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369548579848-3714i4258rb0mlbu5730id8edi8e74ls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

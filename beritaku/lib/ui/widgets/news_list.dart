@@ -7,9 +7,9 @@ import 'package:get/get.dart';
 
 class NewsList extends StatelessWidget {
 
-  List<NewsModel> news;
-
-  NewsList(this.news);
+  final List<NewsModel> news;
+  final Function(bool) isRefresh;
+  const NewsList({Key key, this.news, this.isRefresh}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,9 @@ class NewsList extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               onTap: (){
-                Get.to(DetailPage(newsModel: news[index],));
+                Get.to(DetailPage(newsModel: news[index],)).then((value){
+                  isRefresh(value??false);
+                });
               },
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,

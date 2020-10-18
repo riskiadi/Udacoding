@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import '../widgets/buttonwidget.dart';
 import '../widgets/textfieldwidget.dart';
 import 'package:http/http.dart' as http;
@@ -43,6 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         height: 50,
                       ),
                       TextFieldWidget(
+                        textFormColor: Colors.red,
                         textController: cName,
                         hintText: "Full Name",
                         obscureText: false,
@@ -53,6 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         height: 15,
                       ),
                       TextFieldWidget(
+                        textFormColor: Colors.red,
                         textController: cEmail,
                         hintText: "Email",
                         obscureText: false,
@@ -67,6 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           TextFieldWidget(
+                            textFormColor: Colors.red,
                             textController: cPassword,
                             hintText: "Password",
                             obscureText: true,
@@ -126,6 +130,9 @@ class _RegisterPageState extends State<RegisterPage> {
     setState(() {
       _loading = false;
     });
+    if(data['status'] == 200){
+      Get.back();
+    }
   }
 
   toast(String message) {

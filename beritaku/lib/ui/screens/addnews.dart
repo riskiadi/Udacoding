@@ -5,6 +5,7 @@ import 'package:beritaku/ui/widgets/news_imagepicker.dart';
 import 'package:beritaku/ui/widgets/textfieldwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:get_storage/get_storage.dart';
@@ -15,7 +16,6 @@ class AddNewsPage extends StatefulWidget {
 }
 
 class _AddNewsPageState extends State<AddNewsPage> {
-
   File _file;
   final _formKey = GlobalKey<FormState>();
   final cTitle = TextEditingController();
@@ -32,10 +32,16 @@ class _AddNewsPageState extends State<AddNewsPage> {
         title: Text('Add News'),
         actions: [
           FlatButton(
-            child: Text('Posting', style: TextStyle(color: Colors.white),),
-            onPressed: (){
-              if(_formKey.currentState.validate() && newsCategory.isNotEmpty && _file!=null){
-                addNews();
+            child: Text(
+              'Posting',
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: () {
+              if (_formKey.currentState.validate() && newsCategory.isNotEmpty && _file != null) {
+                EasyLoading.show();
+                addNews().then((value){
+                  EasyLoading.dismiss();
+                });
               }
             },
           ),
@@ -65,22 +71,24 @@ class _AddNewsPageState extends State<AddNewsPage> {
                   newsCategory = value;
                   categoryID = int.parse(getCategoriesId(value));
                 },
-                selectedItem: newsCategory==null || newsCategory.isEmpty ? null : newsCategory,
+                selectedItem: newsCategory == null || newsCategory.isEmpty
+                    ? null
+                    : newsCategory,
                 hint: 'Choose Category',
                 showClearButton: true,
                 onFind: (text) {
                   return getCategories();
                 },
                 validator: (value) {
-                  if(value == null){
+                  if (value == null) {
                     return 'required';
-                  }else{
+                  } else {
                     return null;
                   }
                 },
               ),
               NewsImagePicker(
-                filePath: (String path){
+                filePath: (String path) {
                   setState(() {
                     _file = File(path);
                   });
@@ -93,16 +101,15 @@ class _AddNewsPageState extends State<AddNewsPage> {
     );
   }
 
-  addNews() async{
+  Future<void> addNews() async {
     final dioNetwork = dio.Dio();
 
-    dioNetwork.options.baseUrl = 'https://flutterest.000webhostapp.com/nagari/Api/addNews';
-    dioNetwork.options.headers = {
-      'Content-Type': 'multipart/form-data'
-    };
+    dioNetwork.options.baseUrl =
+        'https://flutterest.000webhostapp.com/nagari/Api/addNews';
+    dioNetwork.options.headers = {'Content-Type': 'multipart/form-data'};
 
-    final formData = dio.FormData.fromMap({
-      "news_title" : cTitle.text,
+    dio.FormData formData = dio.FormData.fromMap({
+      "news_title": cTitle.text,
       "news_content": cContent.text,
       "news_category": categoryID,
       "news_author": GetStorage().read('sId'),
@@ -110,20 +117,19 @@ class _AddNewsPageState extends State<AddNewsPage> {
     });
 
     dio.Response response = await dioNetwork.post(
-        'https://flutterest.000webhostapp.com/nagari/Api/addNews',
-        data: formData,
+      'https://flutterest.000webhostapp.com/nagari/Api/addNews',
+      data: formData,
     );
 
     print(response.data.toString());
     Get.back(result: true);
-
   }
-  
-  Future<List<String>> getCategories() async{
 
+  Future<List<String>> getCategories() async {
     List<String> categories = List();
     final dioNetwork = dio.Dio();
-    dio.Response response = await dioNetwork.get('https://flutterest.000webhostapp.com/nagari/Api/getNewsInfo');
+    dio.Response response = await dioNetwork
+        .get('https://flutterest.000webhostapp.com/nagari/Api/getNewsInfo');
 
     final infoModel = infoModelFromJson(jsonEncode(response.data));
     infoModel.categories.forEach((Category element) {
@@ -135,15 +141,12 @@ class _AddNewsPageState extends State<AddNewsPage> {
     return categories;
   }
 
-  String getCategoriesId(String category){
-    var tmpList = _categoryList.where((element){
+  String getCategoriesId(String category) {
+    var tmpList = _categoryList.where((element) {
       var _category = element.categoryName;
-      return (_category.contains(category)
-      );
+      return (_category.contains(category));
     }).toList();
     setState(() {});
     return tmpList.first.categoryId;
   }
-
-
 }

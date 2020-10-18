@@ -1,13 +1,29 @@
-import 'package:beritaku/ui/screens/home.dart';
-import 'package:beritaku/ui/screens/login.dart';
-import 'package:beritaku/ui/screens/onboarding.dart';
+
+import 'package:beritaku/ui/screens/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 Future<void> main() async {
   await GetStorage.init();
   runApp(MyApp());
+  configLoading();
+}
+
+void configLoading() {
+  EasyLoading.instance
+    ..displayDuration = const Duration(milliseconds: 2000)
+    ..indicatorType = EasyLoadingIndicatorType.fadingCircle
+    ..loadingStyle = EasyLoadingStyle.dark
+    ..indicatorSize = 45.0
+    ..radius = 10.0
+    ..progressColor = Colors.yellow
+    ..backgroundColor = Colors.green
+    ..indicatorColor = Colors.yellow
+    ..textColor = Colors.yellow
+    ..maskColor = Colors.blue.withOpacity(0.5)
+    ..userInteractions = true;
 }
 
 class MyApp extends StatelessWidget {
@@ -19,22 +35,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: checkWidget(),
+      builder: (context, child) {
+        return FlutterEasyLoading(child: child);
+      },
+      home: SplashPage(),
       debugShowCheckedModeBanner: false,
     );
-  }
-
-  Widget checkWidget(){
-    final getStorage = GetStorage();
-    if(getStorage.read('onBoarding')??false){
-      if(getStorage.read('isLogin')??false){
-        return HomePage();
-      }else{
-        return LoginPage();
-      }
-    }else{
-      return OnBoardingPage();
-    }
   }
 
 }

@@ -1,6 +1,7 @@
 import 'package:beritaku/model/infomodel.dart';
 import 'package:beritaku/model/newsmodel.dart';
 import 'package:beritaku/ui/screens/category.dart';
+import 'package:beritaku/ui/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -8,26 +9,13 @@ import 'package:get/get.dart';
 class NewsTopRated extends StatefulWidget {
 
   final List<Category> newsInfo;
-  final Future<List<NewsModel>> newsList;
-  NewsTopRated(this.newsInfo, this.newsList);
+  NewsTopRated(this.newsInfo);
 
   @override
   _NewsTopRatedState createState() => _NewsTopRatedState();
 }
 
 class _NewsTopRatedState extends State<NewsTopRated> {
-
-  List<NewsModel> _newsList;
-
-  @override
-  void initState() {
-    widget.newsList.then((value){
-      setState(() {
-        _newsList = value;
-      });
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +32,11 @@ class _NewsTopRatedState extends State<NewsTopRated> {
           elevation: 2,
           child: InkWell(
             onTap: () {
-              Get.to(CategoryPage(newsList: _newsList, category: widget.newsInfo[index].categoryName,));
+              Get.to(CategoryPage(category: widget.newsInfo[index].categoryName,)).then((value){
+                if(value??false){
+                  Get.offAll(HomePage());
+                }
+              });
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

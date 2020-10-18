@@ -5,6 +5,8 @@ import 'package:beritaku/ui/widgets/textfieldwidget.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class EditPage extends StatefulWidget {
@@ -37,6 +39,10 @@ class _EditPageState extends State<EditPage> {
       cTitle.text = widget.title;
       cContent.text = widget.content;
       newsCategory = widget.newsCategory;
+      EasyLoading.show();
+      getCategories().then((_){
+        EasyLoading.dismiss();
+      });
     });
     super.initState();
   }
@@ -51,7 +57,11 @@ class _EditPageState extends State<EditPage> {
             child: Text('Update', style: TextStyle(color: Colors.white),),
             onPressed: (){
               if(_formKey.currentState.validate() && newsCategory.isNotEmpty){
-                editNews();
+                EasyLoading.show();
+                editNews().then((_){
+                  EasyLoading.dismiss();
+                  Get.back(result: true);
+                });
               }
             },
           ),
@@ -105,7 +115,7 @@ class _EditPageState extends State<EditPage> {
     );
   }
 
-  editNews() async{
+  Future<void> editNews() async{
 
     final dioNetwork = dio.Dio();
     final formData = dio.FormData.fromMap({
